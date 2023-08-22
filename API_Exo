@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: API Exo
+  version: 1.0.0
+servers:
+  - url: http://STD22068.com
+paths:
+  /students:
+    get:
+      summary: Récupération des élèves
+      responses:
+        '200':
+          description: Succès 
+          content:
+            application/json:
+              example:
+                - id: 1
+                  Donnée1: Jah
+                  Donnée2: Man
+                - id: 2
+                  Donnée1: Tafitasoa 
+                  Donnée2: Thony
+        '500':
+          description: Erreur_détecté 
+
+    post:
+      summary: Création de nouvelles données
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                prenom:
+                  type: string
+      responses:
+        '200':
+          description: Succès 
+          content:
+            application/json:
+              example:
+                id: 3
+                Donnée1: Naivo
+                Donnée2: Lala
+        '500':
+          description: Erreur_détecté
+
+    put:
+      summary: Mise à jour des données d'un élève
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                prenom:
+                  type: string
+      responses:
+        '200':
+          description: Succès 
+          content:
+            application/json:
+              example:
+                message: Élève mises à jour avec succès
+        '500':
+          description: Erreur_détecté
+
+    delete:
+      summary: Suppression des données d'un élève
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Succès 
+          content:
+            application/json:
+              example:
+                message: Élève supprimées avec succès
+        '500':
+          description: Erreur_détecté
